@@ -1,0 +1,33 @@
+
+<div class = "NewSearch">
+<input type="text" placeholder="Type the city name here " #SearchElement>
+<button type="button" name="button" (click) = "this.getClick(SearchElement.value);">Search</button>
+</div>
+<div class = "ValueElements" >
+	<table id='cities'>
+		<tr *ngIf = "this.CurrentSearchValue !== undefined">
+			<td> {{this.CurrentSearchValue.SearchElement}}</td>
+			<td *ngFor ="let value of this.CurrentSearchValue.val">{{value}}</td>
+		</tr>
+	</table>
+</div>
+<div class="PastSearch" >
+	<h1>Previous Searched Values</h1>
+	<table id='cities'>
+		<tr>
+			<th>Place Name</th>
+			<th>Last Checked Time</th>
+			<th>Monday Temp(Celcius)</th>
+			<th>Tuesday Temp(Celcius)</th>
+			<th>Wednesday Temp(Celcius)</th>
+			<th>Thursday Temp(Celcius)</th>
+			<th>Friday Temp(Celcius)</th>
+			<th>Saturday Temp(Celcius)</th>
+			<th>Sunday Temp(Celcius)</th>
+		</tr>
+		<tr *ngFor = 'let pastWeather of this.pastSearchValue' (click) = 'this.getClick(pastWeather.SearchElement)'>
+			<td>{{pastWeather.SearchElement}}</td>
+			<td>{{pastWeather.SearchTime[0]}}{{pastWeather.SearchTime[1]}}{{pastWeather.SearchTime[2]}}{{pastWeather.SearchTime[3]}}{{pastWeather.SearchTime[4]}}</td>
+			<td *ngFor = 'let value of this.pastWeather.val'>{{value}}</td>
+	</table>
+</div>
